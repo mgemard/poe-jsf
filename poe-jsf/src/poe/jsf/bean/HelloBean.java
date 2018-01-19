@@ -1,4 +1,4 @@
-package poe.jsf;
+package poe.jsf.bean;
 
 import java.io.Serializable;
 
