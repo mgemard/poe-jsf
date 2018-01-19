@@ -2,10 +2,12 @@ package poe.jsf.controller;
 
 import java.io.Serializable;
 
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
+import poe.dao.UserDao;
 import poe.jsf.bean.UserBean;
 
 @ManagedBean
@@ -14,6 +16,9 @@ public class UserController implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private UserBean user;
+
+    @EJB
+    private UserDao userDao;
 
     public UserController() {
         user = new UserBean();
@@ -46,4 +51,12 @@ public class UserController implements Serializable {
         this.user = user;
     }
 
+
+    public UserDao getUserDao() {
+        return userDao;
+    }
+
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
 }

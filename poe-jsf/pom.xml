@@ -4,12 +4,11 @@
 	<groupId>poe.jsf</groupId>
 	<artifactId>poe-jsf</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<modules>
-		<module>../jsfjre</module>
-	</modules>
-	<packaging>pom</packaging>
+	
 	<build>
 		<sourceDirectory>src</sourceDirectory>
+		<resources>
+		<resource>resources</resource></resources>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -30,36 +29,21 @@
 	</build>
 
 	<dependencies>
-		<!-- Dépendance vers Mojarra : l’implémentation de référence de JSF 
-			2.2 -->
-		<dependency>
-			<groupId>org.glassfish</groupId>
-			<artifactId>javax.faces</artifactId>
-			<version>2.2.14</version>
-		</dependency>
-		<!-- Dépendance vers la librairie JSTL -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
-
-		<!-- Dépendance hibernate -->
-		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.1-api</artifactId>
-			<version>1.0.0.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>5.2.12.Final</version>
-		</dependency>
-		<!-- Dépendance vers h2 -->
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>1.4.196</version>
-		</dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.196</version>
+        </dependency>
 	</dependencies>
 </project>
