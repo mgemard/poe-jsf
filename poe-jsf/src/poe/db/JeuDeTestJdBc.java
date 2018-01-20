@@ -4,18 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.List;
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.query.Query;
-
-import poe.jpa.User;
 
 public class JeuDeTestJdBc {
 
@@ -48,31 +36,31 @@ public class JeuDeTestJdBc {
         conn.close();
         // jdbc:hsqldb:hsql://localhost:9001/basejpa", "sa", ""
 
-        
-
-        CriteriaBuilder criteriaBuilder;
-        Session session;
-        
-        SessionFactory sessionFactory = new Configuration().configure("/resources/hibernate.cfg.xml")
-                .buildSessionFactory();
-        session = sessionFactory.openSession();
-
-        criteriaBuilder = session.getCriteriaBuilder();
-
-        CriteriaQuery<User> criteria = criteriaBuilder.createQuery(User.class);
-        Root<User> root = criteria.from(User.class);
-        criteria.select(root);
-        Query<User> query = session.createQuery(criteria);
-
-        List<User> users = query.getResultList();
-
-        System.out.println();
-        System.out.println("* Liste des users :");
-        for (User user : users) {
-            System.out.println("Pr. " + user.getFirstname() + " " + user.getLastname() + "(" + user.getId() + ")");
-        }
-
-        sessionFactory.close();
+//        
+//
+//        CriteriaBuilder criteriaBuilder;
+//        Session session;
+//        
+//        SessionFactory sessionFactory = new Configuration().configure("/resources/hibernate.cfg.xml")
+//                .buildSessionFactory();
+//        session = sessionFactory.openSession();
+//
+//        criteriaBuilder = session.getCriteriaBuilder();
+//
+//        CriteriaQuery<User> criteria = criteriaBuilder.createQuery(User.class);
+//        Root<User> root = criteria.from(User.class);
+//        criteria.select(root);
+//        Query<User> query = session.createQuery(criteria);
+//
+//        List<User> users = query.getResultList();
+//
+//        System.out.println();
+//        System.out.println("* Liste des users :");
+//        for (User user : users) {
+//            System.out.println("Pr. " + user.getFirstname() + " " + user.getLastname() + "(" + user.getId() + ")");
+//        }
+//
+//        sessionFactory.close();
 
     }
 }
