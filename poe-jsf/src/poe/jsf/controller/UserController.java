@@ -8,6 +8,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import poe.dao.UserDao;
+import poe.jpa.User;
 import poe.jsf.bean.UserBean;
 
 @ManagedBean
@@ -26,6 +27,11 @@ public class UserController implements Serializable {
 
     public void add() {
         System.out.println("adding user " + user.getEmail());
+        User userJpa = new User();
+        userJpa.setEmail(user.getEmail());
+        userJpa.setPassword(user.getPassword());
+        userDao.add(userJpa);
+        show();
     }
 
     public void show() {
@@ -36,7 +42,7 @@ public class UserController implements Serializable {
         // enregistrer le user en bdd
         // afficher à l'utilisateur qu'on a bien pris
         // en compte son inscription
-        
+//        return "home";
         FacesContext facesContext = FacesContext.getCurrentInstance();
         String outcome = "home"; // Do your thing?
         facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext, null, outcome);

@@ -3,10 +3,10 @@
 
     <persistence-unit name="pu-h2">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>poe.jsf.domain.User</class>
+        <class>poe.jpa.User</class>
         <properties>
-            <property name="hibernate.connection.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;DATABASE_TO_UPPER=false"/>
-            <!-- jdbc:h2:tcp://localhost/~/test -->
+            <property name="hibernate.connection.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;DATABASE_TO_UPPER=false"/> 
+            <!-- <property name="hibernate.connection.url" value="jdbc:h2:tcp://localhost/~/test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;DATABASE_TO_UPPER=false"/>-->
             <property name="dialect" value="org.hibernate.dialect.H2Dialect"/>
             <property name="hibernate.connection.driver_class" value="org.h2.Driver"/>
             <property name="hibernate.connection.username" value="sa"/>

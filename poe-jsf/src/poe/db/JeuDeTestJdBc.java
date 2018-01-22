@@ -12,12 +12,16 @@ public class JeuDeTestJdBc {
             "INSERT INTO USER(id, name) values(0, 'bob', 'doyle', '', '')" };
 
     public static void main(String[] a) throws Exception {
+        // java -cp C:\Users\gfg\.m2\repository\com\h2database\h2\1.4.196\h2-1.4.196.jar org.h2.tools.Server
+        
+        
         Class.forName("org.h2.Driver");
         Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "");
+//        Connection conn = DriverManager.getConnection("jdbc:h2:mem:test", "sa", "");
         Statement stmt = conn.createStatement();
         for (String query : QUERIES) {
             System.out.println(query);
-            stmt.executeUpdate(query);
+//            stmt.executeUpdate(query);
         }
 
         // conn = DriverManager.getConnection("jdbc:h2:~/test", "sa", "");

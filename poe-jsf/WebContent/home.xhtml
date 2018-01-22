@@ -7,6 +7,9 @@
 </h:head>
 <h:body>
 	<h1>Premier exemple JSF 2.0 - bienvenue.xhtml</h1>
-	<p>Bienvenue #{userBean.email} !</p>
+	<h:dataTable value="#{userListController.getUserList()}" var="u">
+    <h:column>#{u.email}</h:column>
+    <h:column>#{u.password}</h:column>
+</h:dataTable>
 </h:body>
 </html>
