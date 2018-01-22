@@ -7,9 +7,12 @@
 </h:head>
 <h:body>
 	<h1>Premier exemple JSF 2.0 - bienvenue.xhtml</h1>
+	<h:form>
 	<h:dataTable value="#{userListController.getUserList()}" var="u">
     <h:column>#{u.email}</h:column>
     <h:column>#{u.password}</h:column>
+    <h:column><h:commandButton value="Delete" action="#{userListController.delete(u.id)}" /></h:column>
 </h:dataTable>
+</h:form>
 </h:body>
 </html>

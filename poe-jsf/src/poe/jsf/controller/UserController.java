@@ -25,13 +25,14 @@ public class UserController implements Serializable {
         user = new UserBean();
     }
 
-    public void add() {
+    public String add() {
         System.out.println("adding user " + user.getEmail());
         User userJpa = new User();
         userJpa.setEmail(user.getEmail());
         userJpa.setPassword(user.getPassword());
         userDao.add(userJpa);
         show();
+        return "home";
     }
 
     public void show() {
@@ -42,10 +43,9 @@ public class UserController implements Serializable {
         // enregistrer le user en bdd
         // afficher à l'utilisateur qu'on a bien pris
         // en compte son inscription
-//        return "home";
-        FacesContext facesContext = FacesContext.getCurrentInstance();
-        String outcome = "home"; // Do your thing?
-        facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext, null, outcome);
+//        FacesContext facesContext = FacesContext.getCurrentInstance();
+//        String outcome = "home"; // Do your thing?
+//        facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext, null, outcome);
         
     }
 
