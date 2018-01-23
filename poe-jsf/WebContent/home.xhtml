@@ -11,6 +11,7 @@
 		<h:dataTable value="#{userController.getUserList()}" var="u">
 			<h:column>#{u.email}</h:column>
 			<h:column>#{u.password}</h:column>
+            <h:column>#{u.id}</h:column>
 			<h:column>
 				<h:commandButton value="Delete"
 					action="#{userController.delete(u.id)}" />
