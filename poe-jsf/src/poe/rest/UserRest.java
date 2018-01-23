@@ -62,6 +62,35 @@ public class UserRest {
     
     
     
+    /*
+     * 
+     * GET http://localhost:8080/poe-jsf/user/show?id=42 HTTP/1.1
+
+
+
+###
+
+DELETE http://localhost:8080/poe-jsf/user/delete?id=42 HTTP/1.1
+
+
+###
+
+
+POST http://localhost:8080/poe-jsf/user?email=mail&password=pass HTTP/1.1
+content-type: application/json
+
+
+###
+
+
+POST http://localhost:8080/poe-jsf/user/addJson HTTP/1.1
+content-type: application/json
+
+{
+    "email": "mailazfa",
+    "password": "secretpasswordfafa"
+}*/
+     */
     
 
 }
