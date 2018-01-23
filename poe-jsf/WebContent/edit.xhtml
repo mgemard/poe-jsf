@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Premier exemple JSF 2.0</title>
+</h:head>
+<h:body>
+	<h1>Premier exemple JSF 2.0 - bienvenue.xhtml</h1>
+
+	<h:form>
+
+		<div>
+			<h:outputLabel value="email:" />
+			<h:inputText id="email" value="#{userController.user.email}"
+				required="true" />
+		</div>
+		<div>
+			<h:outputLabel value="password" />
+			<h:inputSecret id="password" value="#{userController.user.password}"
+				required="true" />
+		</div>
+		<h:inputHidden id="id" value="#{userController.user.id}" />
+		<h:commandButton value="Update"
+			action="#{userController.update()}" />
+
+	</h:form>
+</h:body>
+</html>

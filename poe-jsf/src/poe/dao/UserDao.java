@@ -29,8 +29,18 @@ public class UserDao {
         em.remove(userToDelete);
 
     }
-    public void deleteEntity(User userToDelete) {
+
+    public void delete(User userToDelete) {
         em.remove(userToDelete);
+    }
+
+    public void update(User user) {
+        user = em.merge(user);
+    }
+
+    public User get(long id) {
+
+        return em.find(User.class, id);
     }
 
 }

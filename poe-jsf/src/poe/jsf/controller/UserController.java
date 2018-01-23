@@ -1,28 +1,36 @@
 package poe.jsf.controller;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
 
 import poe.dao.UserDao;
 import poe.jpa.User;
-import poe.jsf.bean.UserBean;
 
 @ManagedBean
 @RequestScoped
 public class UserController implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private UserBean user;
+    private User user;
+    private List<User> userList;
 
     @EJB
     private UserDao userDao;
 
     public UserController() {
-        user = new UserBean();
+        user = new User();
+    }
+
+    public List<User> getUserList() {
+
+        userList = userDao.getUsers();
+        System.out.println("I am in getUserList() from controller");
+        System.out.println(userList.size());
+        return userList;
     }
 
     public String add() {
@@ -43,20 +51,20 @@ public class UserController implements Serializable {
         // enregistrer le user en bdd
         // afficher à l'utilisateur qu'on a bien pris
         // en compte son inscription
-//        FacesContext facesContext = FacesContext.getCurrentInstance();
-//        String outcome = "home"; // Do your thing?
-//        facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext, null, outcome);
-        
+        // FacesContext facesContext = FacesContext.getCurrentInstance();
+        // String outcome = "home"; // Do your thing?
+        // facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,
+        // null, outcome);
+
     }
 
-    public UserBean getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(UserBean user) {
+    public void setUser(User user) {
         this.user = user;
     }
-
 
     public UserDao getUserDao() {
         return userDao;
@@ -65,4 +73,20 @@ public class UserController implements Serializable {
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
     }
+
+    public String delete(long id) {
+        this.userDao.delete(id);
+        return "home";
+    }
+
+    public String showUpdatePage(long id) {
+        this.user = this.userDao.get(id);
+        return "edit";
+    }
+
+    public String update() {
+        userDao.update(this.user);
+        return "home";
+    }
+
 }
