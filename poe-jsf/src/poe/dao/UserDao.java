@@ -14,12 +14,13 @@ public class UserDao {
     @PersistenceContext(unitName = "pu-h2")
     private EntityManager em;
 
-    public void add(User user) {
+    public long add(User user) {
         System.out.println("em: " + em);
         em.persist(user);
+        return user.getId();
     }
 
-    public List<User> getUsers() {
+    public List<User> list() {
         System.out.println("I am in getUsers() from UserDao");
         return em.createQuery("SELECT u from User u").getResultList();
     }

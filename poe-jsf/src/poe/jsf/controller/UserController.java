@@ -27,7 +27,7 @@ public class UserController implements Serializable {
 
     public List<User> getUserList() {
 
-        userList = userDao.getUsers();
+        userList = userDao.list();
         System.out.println("I am in getUserList() from controller");
         System.out.println(userList.size());
         return userList;

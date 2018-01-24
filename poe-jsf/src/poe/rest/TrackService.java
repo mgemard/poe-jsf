@@ -19,7 +19,7 @@ import poe.dao.UserDao;
 import poe.jpa.User;
 
 @Path("users")
-public class UserService {
+public class TrackService {
 
     @EJB
     private UserDao userDao;
@@ -40,14 +40,14 @@ public class UserService {
         user.setEmail(email);
         user.setPassword(password);
         Long userId = userDao.add(user);
-        return Response.created(uriInfo.getBaseUriBuilder().path(UserService.class).path(Long.toString(userId)).build()).build();
+        return Response.created(uriInfo.getBaseUriBuilder().path(TrackService.class).path(Long.toString(userId)).build()).build();
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addJson(User user, @Context UriInfo uriInfo) {
         Long userId = userDao.add(user);
-        return Response.created(uriInfo.getBaseUriBuilder().path(UserService.class).path(Long.toString(userId)).build()).build();
+        return Response.created(uriInfo.getBaseUriBuilder().path(TrackService.class).path(Long.toString(userId)).build()).build();
     }
 
     @DELETE
