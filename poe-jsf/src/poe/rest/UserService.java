@@ -16,7 +16,7 @@ import poe.dao.UserDao;
 import poe.jpa.User;
 
 @Path("users")
-public class UserRest {
+public class UserService {
 
     @EJB
     private UserDao userDao;
