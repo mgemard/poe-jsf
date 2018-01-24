@@ -1,10 +1,12 @@
 package poe.jpa;
 
-import javax.faces.context.FacesContext;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class User {
@@ -20,6 +22,9 @@ public class User {
     private String email;
 
     private String password;
+    
+    @ManyToMany
+    private List<Track> tracks;
 
     public User() {
     }
@@ -64,5 +69,14 @@ public class User {
         this.password = password;
     }
 
+    public List<Track> getTracks() {
+        return tracks;
+    }
+
+    public void setTracks(List<Track> tracks) {
+        this.tracks = tracks;
+    }
+
+    
 
 }

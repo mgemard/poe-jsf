@@ -7,6 +7,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -35,25 +36,40 @@ public class UserService {
 
     @POST
     @Path("/{email}/{password}")
-    public Response add(@PathParam("email") String email, @PathParam("password") String password, @Context UriInfo uriInfo) {
+    public Response add(@PathParam("email") String email, @PathParam("password") String password,
+            @Context UriInfo uriInfo) {
         User user = new User();
         user.setEmail(email);
         user.setPassword(password);
         Long userId = userDao.add(user);
-        return Response.created(uriInfo.getBaseUriBuilder().path(UserService.class).path(Long.toString(userId)).build()).build();
+        return Response.created(uriInfo.getBaseUriBuilder().path(UserService.class).path(Long.toString(userId)).build())
+                .build();
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addJson(User user, @Context UriInfo uriInfo) {
         Long userId = userDao.add(user);
-        return Response.created(uriInfo.getBaseUriBuilder().path(UserService.class).path(Long.toString(userId)).build()).build();
+        return Response.created(uriInfo.getBaseUriBuilder().path(UserService.class).path(Long.toString(userId)).build())
+                .build();
     }
 
     @DELETE
     @Path("{id}")
-    public void delete(@PathParam("id") Long userId) {
+    public void delete(@PathParam("id") long userId) {
         userDao.delete(userId);
+    }
+
+    @PUT
+    @Path("{id}/{email}/{password}")
+    public Response update(@PathParam("email") String email, @PathParam("password") String password,
+            @PathParam("id") long userId, @Context UriInfo uriInfo) {
+        User user = userDao.get(userId);
+        user.setEmail(email);
+        user.setPassword(password);
+        userDao.update(user);
+        return Response.created(uriInfo.getBaseUriBuilder().path(UserService.class).path(Long.toString(userId)).build())
+                .build();
     }
 
     @GET

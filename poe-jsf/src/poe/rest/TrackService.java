@@ -15,50 +15,50 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import poe.dao.UserDao;
-import poe.jpa.User;
+import poe.dao.TrackDao;
+import poe.jpa.Track;
 
-@Path("users")
+@Path("tracks")
 public class TrackService {
 
     @EJB
-    private UserDao userDao;
+    private TrackDao trackDao;
 
     @GET
     @Produces("application/json")
     @Path("{id}")
-    public User show(@PathParam("id") Long userId) {
-        User user = userDao.get(userId);
+    public Track show(@PathParam("id") long userId) {
+        Track user = trackDao.get(userId);
         System.out.println("the user to show " + user.getId());
         return user;
     }
 
     @POST
-    @Path("/{email}/{password}")
-    public Response add(@PathParam("email") String email, @PathParam("password") String password, @Context UriInfo uriInfo) {
-        User user = new User();
-        user.setEmail(email);
-        user.setPassword(password);
-        Long userId = userDao.add(user);
-        return Response.created(uriInfo.getBaseUriBuilder().path(TrackService.class).path(Long.toString(userId)).build()).build();
+    @Path("/{title}/{artist}")
+    public Response add(@PathParam("title") String title, @PathParam("artist") String artist, @Context UriInfo uriInfo) {
+        Track track = new Track();
+        track.setTitle(title);
+        track.addArtist(artist);
+        Long trackId = trackDao.add(track);
+        return Response.created(uriInfo.getBaseUriBuilder().path(TrackService.class).path(Long.toString(trackId)).build()).build();
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response addJson(User user, @Context UriInfo uriInfo) {
-        Long userId = userDao.add(user);
+    public Response addJson(Track track, @Context UriInfo uriInfo) {
+        long userId = trackDao.add(track);
         return Response.created(uriInfo.getBaseUriBuilder().path(TrackService.class).path(Long.toString(userId)).build()).build();
     }
 
     @DELETE
     @Path("{id}")
-    public void delete(@PathParam("id") Long userId) {
-        userDao.delete(userId);
+    public void delete(@PathParam("id") long userId) {
+        trackDao.delete(userId);
     }
 
     @GET
-    public List<User> list() {
-        return userDao.list();
+    public List<Track> list() {
+        return trackDao.list();
     }
 
 }
