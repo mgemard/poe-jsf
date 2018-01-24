@@ -22,26 +22,24 @@ public class TrackDao {
     }
 
     public List<Track> list() {
-        System.out.println("I am in getUsers() from UserDao");
-        return em.createQuery("SELECT u from User u").getResultList();
+        System.out.println("I am in getUsers() from TrackDao");
+        return em.createQuery("SELECT u from Track u").getResultList();
     }
 
-    public void delete(long userId) {
-        Track userToDelete = em.find(Track.class, userId);
-        em.remove(userToDelete);
-
+    public void delete(long trackId) {
+        Track trackToDelete = em.find(Track.class, trackId);
+        em.remove(trackToDelete);
     }
 
-    public void delete(Track userToDelete) {
-        em.remove(userToDelete);
+    public void delete(Track trackToDelete) {
+        em.remove(trackToDelete);
     }
 
-    public void update(Track user) {
-        user = em.merge(user);
+    public void update(Track track) {
+        track = em.merge(track);
     }
 
     public Track get(long id) {
-
         return em.find(Track.class, id);
     }
 

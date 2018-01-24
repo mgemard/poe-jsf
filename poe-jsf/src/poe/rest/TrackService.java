@@ -25,6 +25,11 @@ public class TrackService {
     private TrackDao trackDao;
 
     @GET
+    public List<Track> list() {
+        return trackDao.list();
+    }
+
+    @GET
     @Produces("application/json")
     @Path("{id}")
     public Track show(@PathParam("id") long userId) {
@@ -34,11 +39,10 @@ public class TrackService {
     }
 
     @POST
-    @Path("/{title}/{artist}")
-    public Response add(@PathParam("title") String title, @PathParam("artist") String artist, @Context UriInfo uriInfo) {
+    @Path("/{title}")
+    public Response add(@PathParam("title") String title, @Context UriInfo uriInfo) {
         Track track = new Track();
         track.setTitle(title);
-        track.addArtist(artist);
         Long trackId = trackDao.add(track);
         return Response.created(uriInfo.getBaseUriBuilder().path(TrackService.class).path(Long.toString(trackId)).build()).build();
     }
@@ -54,11 +58,6 @@ public class TrackService {
     @Path("{id}")
     public void delete(@PathParam("id") long userId) {
         trackDao.delete(userId);
-    }
-
-    @GET
-    public List<Track> list() {
-        return trackDao.list();
     }
 
 }

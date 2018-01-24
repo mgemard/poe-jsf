@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +19,7 @@ public class Track {
 
     private String title;
 
-    @ManyToMany(mappedBy = "tracks")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "tracks")
     private List<User> artists;
 
     public Track() {

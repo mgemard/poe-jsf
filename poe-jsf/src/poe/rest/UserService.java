@@ -26,6 +26,11 @@ public class UserService {
     private UserDao userDao;
 
     @GET
+    public List<User> list() {
+        return userDao.list();
+    }
+
+    @GET
     @Produces("application/json")
     @Path("{id}")
     public User show(@PathParam("id") Long userId) {
@@ -70,11 +75,6 @@ public class UserService {
         userDao.update(user);
         return Response.created(uriInfo.getBaseUriBuilder().path(UserService.class).path(Long.toString(userId)).build())
                 .build();
-    }
-
-    @GET
-    public List<User> list() {
-        return userDao.list();
     }
 
 }
