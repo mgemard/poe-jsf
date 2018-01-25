@@ -2,6 +2,7 @@ package poe.jpa;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,9 +25,11 @@ public class User {
 
     private String password;
     
-//    @ManyToMany(fetch = FetchType.EAGER)
-    @OneToMany(fetch = FetchType.EAGER)
+    // add cascade=CascadeType.REMOVE if you want to delete a track when deleting a user
+    @OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.REMOVE)
     private List<Track> tracks;
+    
+//  @ManyToMany(fetch = FetchType.EAGER)
 
     public User() {
     }

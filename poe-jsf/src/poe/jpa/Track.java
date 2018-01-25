@@ -18,10 +18,11 @@ public class Track {
     private long id;
 
     private String title;
-
-//    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "tracks")
+    
     @ManyToOne
     private User user;
+
+//  @ManyToMany(fetch = FetchType.EAGER, mappedBy = "tracks")
 
     public Track() {
     }
