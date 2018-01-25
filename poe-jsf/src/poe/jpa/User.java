@@ -80,5 +80,8 @@ public class User {
     }
 
     
+    public void addTrack(Track track)  {
+        tracks.add(track);
+    }
 
 }

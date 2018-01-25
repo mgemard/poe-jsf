@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import poe.jpa.Track;
 import poe.jpa.User;
 
 @Stateless
@@ -40,6 +41,12 @@ public class UserDao {
 
     public User get(long id) {
         return em.find(User.class, id);
+    }
+    
+    public void add(long userId, long trackId) {
+        User user = em.find(User.class, userId);
+        Track track = em.find(Track.class, trackId);
+        user.addTrack(track);
     }
 
 }

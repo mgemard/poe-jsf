@@ -17,6 +17,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import poe.dao.UserDao;
+import poe.jpa.Track;
 import poe.jpa.User;
 
 @Path("users")
@@ -75,6 +76,15 @@ public class UserService {
         userDao.update(user);
         return Response.created(uriInfo.getBaseUriBuilder().path(UserService.class).path(Long.toString(userId)).build())
                 .build();
+    }
+
+    @PUT
+    @Path("{userId}/tracks/{trackId}")
+    public Response addTrack(@PathParam("userId") long userId, @PathParam("trackId") long trackId,
+            @Context UriInfo uriInfo) {
+        userDao.add(userId, trackId);
+        return Response.created(uriInfo.getBaseUriBuilder().path(UserService.class).path(Long.toString(userId))
+                .path("tracks").path(Long.toString(trackId)).build()).build();
     }
 
 }
