@@ -21,7 +21,7 @@ public class UserDao {
     }
 
     public List<User> list() {
-        System.out.println("I am in getUsers() from UserDao");
+        System.out.println("I am in get user list() from UserDao");
         return em.createQuery("SELECT u from User u").getResultList();
     }
 

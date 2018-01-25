@@ -32,10 +32,10 @@ public class TrackService {
     @GET
     @Produces("application/json")
     @Path("{id}")
-    public Track show(@PathParam("id") long userId) {
-        Track user = trackDao.get(userId);
-        System.out.println("the user to show " + user.getId());
-        return user;
+    public Track show(@PathParam("id") long trackId) {
+        Track track = trackDao.get(trackId);
+        System.out.println("the track to show " + track.getId());
+        return track;
     }
 
     @POST
@@ -43,21 +43,21 @@ public class TrackService {
     public Response add(@PathParam("title") String title, @Context UriInfo uriInfo) {
         Track track = new Track();
         track.setTitle(title);
-        Long trackId = trackDao.add(track);
+        long trackId = trackDao.add(track);
         return Response.created(uriInfo.getBaseUriBuilder().path(TrackService.class).path(Long.toString(trackId)).build()).build();
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addJson(Track track, @Context UriInfo uriInfo) {
-        long userId = trackDao.add(track);
-        return Response.created(uriInfo.getBaseUriBuilder().path(TrackService.class).path(Long.toString(userId)).build()).build();
+        long trackId = trackDao.add(track);
+        return Response.created(uriInfo.getBaseUriBuilder().path(TrackService.class).path(Long.toString(trackId)).build()).build();
     }
 
     @DELETE
     @Path("{id}")
-    public void delete(@PathParam("id") long userId) {
-        trackDao.delete(userId);
+    public void delete(@PathParam("id") long trackId) {
+        trackDao.delete(trackId);
     }
 
 }

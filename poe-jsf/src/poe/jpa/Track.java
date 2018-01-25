@@ -8,7 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Track {
@@ -19,8 +19,9 @@ public class Track {
 
     private String title;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "tracks")
-    private List<User> artists;
+//    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "tracks")
+    @ManyToOne
+    private User user;
 
     public Track() {
     }
@@ -41,21 +42,28 @@ public class Track {
         this.title = title;
     }
 
-    public List<User> getArtist() {
-        if (artists == null ) {
-            artists = new ArrayList<User>();
-        }
-        return artists;
+    public User getUser() {
+        return user;
     }
 
-    public void setArtist(List<User> artist) {
-        this.artists = artist;
+    public void setUser(User user) {
+        this.user = user;
     }
-
-    public void addArtist(String artist2) {
-        // TODO Auto-generated method stub
-        
-    }
-
-
+    
+    
+//    public List<User> getArtist() {
+//        if (artists == null ) {
+//            artists = new ArrayList<User>();
+//        }
+//        return artists;
+//    }
+//
+//    public void setArtist(List<User> artist) {
+//        this.artists = artist;
+//    }
+//
+//    public void addArtist(String artist2) {
+//        // TODO Auto-generated method stub
+//    }
+    
 }

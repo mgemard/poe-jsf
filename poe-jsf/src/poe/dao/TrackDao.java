@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import poe.jpa.Track;
-import poe.jpa.User;
 
 @Stateless
 public class TrackDao {
@@ -22,7 +21,7 @@ public class TrackDao {
     }
 
     public List<Track> list() {
-        System.out.println("I am in getUsers() from TrackDao");
+        System.out.println("I am in get track list() from TrackDao");
         return em.createQuery("SELECT u from Track u").getResultList();
     }
 
