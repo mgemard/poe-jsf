@@ -1,10 +1,11 @@
 package poe.test;
 
-import static io.restassured.RestAssured.given;
-import static org.junit.Assert.assertEquals;
-
 import javax.json.Json;
 import javax.json.JsonObject;
+
+import static io.restassured.RestAssured.*;
+import static io.restassured.matcher.RestAssuredMatchers.*;
+import static org.hamcrest.Matchers.*;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -16,7 +17,6 @@ import io.restassured.RestAssured;
 import io.restassured.parsing.Parser;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import poe.jpa.User;
 
 public class UserServiceTest {
     private static RequestSpecification request;
@@ -59,9 +59,15 @@ public class UserServiceTest {
         //
         // get("/users")
 
-        User[] persons = given().when().get("/users").as(User[].class);
-
-        assertEquals("bob@mail.com", persons[0].getEmail());
+//        User[] persons = given().when().get("/users").as(User[].class);
+//        List<String> emails = Arrays.stream(persons)
+//                .map(person -> person.getEmail()).collect(Collectors.toList());
+//        assertTrue(emails.contains("bob@mail.com"));
+//        
+//        
+        
+        get("/users").then().body("$.email", hasItem("bob@mail.com"));
+        
 
         // .then()
         // .body("id", equalTo(12))

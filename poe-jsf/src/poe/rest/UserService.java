@@ -26,6 +26,11 @@ public class UserService {
     @EJB
     private UserDao userDao;
 
+//    @GET
+//    public List<User> list() {
+//        return userDao.list();
+//    }
+
     @GET
     public List<User> list() {
         return userDao.list();
