@@ -25,7 +25,7 @@ public class UserServiceTest {
     public static void setUpBeforeClass() throws Exception {
         RestAssured.baseURI = "http://localhost";
         RestAssured.port = 8080;
-        RestAssured.basePath = "poe-jsf";
+        RestAssured.basePath = "/poe-jsf";
         RestAssured.defaultParser = Parser.JSON;
         request = RestAssured.given();
     }
@@ -48,7 +48,8 @@ public class UserServiceTest {
                 .build();
 
         request.body(requestParams.toString());
-        Response response = request.post("/users/add");
+        System.out.println(RestAssured.baseURI + ":" + RestAssured.port + RestAssured.basePath + "/users");
+        Response response = request.post("/users");
 
         // int statusCode = response.getStatusCode();
         // assertEquals(statusCode, "201");
