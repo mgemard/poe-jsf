@@ -20,13 +20,13 @@ You can test the web service with Postman or REST Client from VSC (use the rest.
 
 You must put the required jar from https://mvnrepository.com/artifact/org.hibernate/hibernate-core
 
-\<dependency>
+<dependency>
 
-    \<groupId>org.hibernate</groupId>
+    <groupId>org.hibernate</groupId>
     
-    \<artifactId>hibernate-core</artifactId>
+    <artifactId>hibernate-core</artifactId>
     
-    \<version>5.2.12.Final</version>
+    <version>5.2.12.Final</version>
     
 \</dependency>
 
