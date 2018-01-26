@@ -1,6 +1,7 @@
 # poe-jsf
 
 Version: Java 8
+
 Server: Tomcat EE Plume-7.0.4
 
 ## IHM
@@ -17,13 +18,16 @@ You can test the web service with Postman or REST Client from VSC (use the rest.
 
 ## Tomcat
 
-You must put the required jar from 
+You must put the required jar from https://mvnrepository.com/artifact/org.hibernate/hibernate-core
 
-<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
-<dependency>
-    <groupId>org.hibernate</groupId>
-    <artifactId>hibernate-core</artifactId>
-    <version>5.2.12.Final</version>
-</dependency>
+\<dependency>
+
+    \<groupId>org.hibernate</groupId>
+    
+    \<artifactId>hibernate-core</artifactId>
+    
+    \<version>5.2.12.Final</version>
+    
+\</dependency>
 
 into the lib folder 
