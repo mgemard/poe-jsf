@@ -1,0 +1,29 @@
+GET http://localhost:8080/poe-jsf/users HTTP/1.1
+###
+GET http://localhost:8080/poe-jsf/users/1 HTTP/1.1
+###
+DELETE http://localhost:8080/poe-jsf/users/1 HTTP/1.1
+###
+POST http://localhost:8080/poe-jsf/users/newemailfrompost/newpasswordpost HTTP/1.1
+###
+POST http://localhost:8080/poe-jsf/users HTTP/1.1
+content-type: application/json
+
+{
+    "email": "mailpostjson",
+    "password": "secretpasswordpostjson"
+}
+###
+PUT http://localhost:8080/poe-jsf/users/1/newemailput/newpasswordput HTTP/1.1
+
+###
+GET http://localhost:8080/poe-jsf/tracks HTTP/1.1
+###
+GET http://localhost:8080/poe-jsf/tracks/1 HTTP/1.1
+###
+DELETE http://localhost:8080/poe-jsf/tracks/1 HTTP/1.1
+###
+POST http://localhost:8080/poe-jsf/tracks/myawesometrack
+
+###
+PUT http://localhost:8080/poe-jsf/users/1/tracks/1
